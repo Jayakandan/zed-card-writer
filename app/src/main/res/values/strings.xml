@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">ZED Card Writer</string>
+    <string name="subtitle">Writes name and balance into the card\'s own memory (sector 1)</string>
+
+    <string name="status_initial">Choose an action, then tap the card.</string>
+    <string name="uid_none">UID: (tap a card)</string>
+
+    <string name="label_name">Cardholder name (max 16 characters)</string>
+    <string name="hint_name">e.g. Adam</string>
+
+    <string name="label_amount">Amount in dollars</string>
+    <string name="hint_amount">e.g. 500 or 12.50</string>
+
+    <string name="label_action">Action on next tap</string>
+    <string name="mode_read">Read card only (change nothing)</string>
+    <string name="mode_write">Write name and set balance to this amount</string>
+    <string name="mode_topup">Top up: add this amount to the balance</string>
+
+    <string name="tap_hint">Hold the card flat against the back of the phone until the log stops. Every write is read back off the card to prove it stuck.</string>
+
+    <string name="label_log">Log</string>
+    <string name="clear">Clear</string>
+</resources>

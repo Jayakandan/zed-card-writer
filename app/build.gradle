@@ -1,0 +1,45 @@
+plugins {
+    id 'com.android.application'
+    id 'org.jetbrains.kotlin.android'
+}
+
+android {
+    namespace 'com.zeddigital.cardwriter'
+    compileSdk 34
+
+    defaultConfig {
+        applicationId "com.zeddigital.cardwriter"
+        minSdk 21
+        targetSdk 34
+        versionCode 1
+        versionName "1.0"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            // Signed with the debug key so `assembleRelease` produces an
+            // installable APK straight from CI. Fine for in-house validator
+            // hardware; swap in a real keystore before any public release.
+            signingConfig signingConfigs.debug
+        }
+        debug {
+            applicationIdSuffix ".debug"
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
+    }
+    kotlinOptions {
+        jvmTarget = '17'
+    }
+}
+
+dependencies {
+    // Deliberately none. The app uses only the Android framework
+    // (android.app.Activity, android.nfc.*), so there is nothing to resolve
+    // beyond the SDK itself and the build stays fast and offline-friendly.
+}
