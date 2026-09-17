@@ -1,10 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">ZED Card Writer</string>
-    <string name="subtitle">Writes name and balance into the card\'s own memory (sector 1)</string>
+    <string name="app_name">ZED NFC Card</string>
+    <string name="subtitle">Mifare Classic reader / writer</string>
+
+    <string name="dash">—</string>
+    <string name="label_cardholder">CARDHOLDER</string>
+    <string name="label_balance">BALANCE</string>
+    <string name="label_uid">CARD UID</string>
 
     <string name="status_initial">Choose an action, then tap the card.</string>
-    <string name="uid_none">UID: (tap a card)</string>
 
     <string name="label_name">Cardholder name (max 16 characters)</string>
     <string name="hint_name">e.g. Adam</string>
@@ -14,11 +18,11 @@
 
     <string name="label_action">Action on next tap</string>
     <string name="mode_read">Read card only (change nothing)</string>
-    <string name="mode_write">Write name and set balance to this amount</string>
-    <string name="mode_topup">Top up: add this amount to the balance</string>
+    <string name="mode_write">Write name and set balance</string>
+    <string name="mode_topup">Top up: add amount to balance</string>
 
-    <string name="tap_hint">Hold the card flat against the back of the phone until the log stops. Every write is read back off the card to prove it stuck.</string>
+    <string name="tap_hint">Hold the card flat against the back of the phone until the log settles. Every write is read back off the card to prove it stuck.</string>
 
-    <string name="label_log">Log</string>
-    <string name="clear">Clear</string>
+    <string name="label_log">Activity log</string>
+    <string name="clear">CLEAR</string>
 </resources>

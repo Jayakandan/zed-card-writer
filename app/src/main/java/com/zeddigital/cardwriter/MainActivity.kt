@@ -38,8 +38,9 @@ class MainActivity : Activity() {
     private var pendingIntent: PendingIntent? = null
 
     private lateinit var statusView: TextView
-    private lateinit var uidView: TextView
-    private lateinit var cardStateView: TextView
+    private lateinit var cardNameView: TextView
+    private lateinit var cardBalanceView: TextView
+    private lateinit var cardUidView: TextView
     private lateinit var nameInput: EditText
     private lateinit var amountInput: EditText
     private lateinit var modeGroup: RadioGroup
@@ -51,8 +52,9 @@ class MainActivity : Activity() {
         setContentView(R.layout.activity_main)
 
         statusView = findViewById(R.id.statusView)
-        uidView = findViewById(R.id.uidView)
-        cardStateView = findViewById(R.id.cardStateView)
+        cardNameView = findViewById(R.id.cardNameView)
+        cardBalanceView = findViewById(R.id.cardBalanceView)
+        cardUidView = findViewById(R.id.cardUidView)
         nameInput = findViewById(R.id.nameInput)
         amountInput = findViewById(R.id.amountInput)
         modeGroup = findViewById(R.id.modeGroup)
@@ -113,14 +115,15 @@ class MainActivity : Activity() {
 
     private fun handleTag(tag: Tag) {
         val uid = CardFormat.bytesToHex(tag.id)
-        uidView.text = "UID: $uid"
+        cardUidView.text = uid
         log("\n---- tap: $uid ----")
 
         val mifare = MifareClassic.get(tag)
         if (mifare == null) {
             // This is the one failure that is NOT fixable in software.
             setStatus("This phone cannot do Mifare Classic.", true)
-            cardStateView.text = ""
+            cardNameView.text = getString(R.string.dash)
+            cardBalanceView.text = getString(R.string.dash)
             log("FAILED: MifareClassic.get() returned null.")
             log("Either this card is not Mifare Classic, or - more likely -")
             log("this phone's NFC chipset does not support Mifare Classic at all.")
@@ -285,16 +288,21 @@ class MainActivity : Activity() {
     // ── ui helpers ─────────────────────────────────────────────────────────
 
     private fun showCardState(name: String?, cents: Long?) {
-        val n = name ?: "(no name on card)"
-        val b = if (cents != null) "$" + CardFormat.centsToDollars(cents) else "(no balance on card)"
-        cardStateView.text = "$n\n$b"
-        cardStateView.visibility = View.VISIBLE
+        cardNameView.text = name ?: "No name on card"
+        cardBalanceView.text =
+            if (cents != null) "$" + CardFormat.centsToDollars(cents) else getString(R.string.dash)
     }
 
     private fun setStatus(text: String, isError: Boolean) {
         statusView.text = text
-        statusView.setTextColor(if (isError) 0xFFD32F2F.toInt() else 0xFF1B5E20.toInt())
-        if (isError) Toast.makeText(this, text, Toast.LENGTH_SHORT).show()
+        if (isError) {
+            statusView.setBackgroundResource(R.drawable.bg_status_error)
+            statusView.setTextColor(resources.getColor(R.color.error))
+            Toast.makeText(this, text, Toast.LENGTH_SHORT).show()
+        } else {
+            statusView.setBackgroundResource(R.drawable.bg_status_ok)
+            statusView.setTextColor(resources.getColor(R.color.ok))
+        }
     }
 
     private fun log(line: String) {
