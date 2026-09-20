@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">ZED NFC Card</string>
+    <string name="dash">—</string>
+    <string name="hint_amount">e.g. 500 or 12.50</string>
+    <string name="label_action">Action on next tap</string>
+    <string name="label_amount">Amount in dollars</string>
+    <string name="label_balance">BALANCE</string>
+    <string name="label_cardholder">CARDHOLDER</string>
+    <string name="label_uid">CARD UID</string>
+
+    <!-- Renamed per request -->
+    <string name="mode_read">Show amount</string>
+    <string name="mode_write">Set balance</string>
+    <string name="mode_topup">Add amount to balance</string>
+
+    <string name="status_initial">Choose an action, then tap the card.</string>
+    <string name="subtitle">Mifare Classic reader / writer</string>
+    <string name="tap_hint">Hold the card flat against the back of the phone until it reads. Every write is read back off the card to prove it stuck.</string>
+
+    <!-- Login screen -->
+    <string name="login_title">ZED NFC Card</string>
+    <string name="login_subtitle">Sign in to continue</string>
+    <string name="login_username_hint">Username</string>
+    <string name="login_password_hint">Password</string>
+    <string name="login_button">Sign in</string>
+    <string name="login_error">Incorrect username or password.</string>
+    <string name="logout_button">Sign out</string>
+
+    <!-- Ready-to-scan overlay -->
+    <string name="scan_ready_title">Ready to Scan</string>
+    <string name="scan_ready_subtitle">Hold the card against the back of the phone</string>
+    <string name="scan_busy_read">Reading card…</string>
+    <string name="scan_busy_write">Writing balance…</string>
+    <string name="scan_busy_topup">Adding to balance…</string>
+    <string name="scan_cancel">Cancel</string>
+
+    <!-- Top-up sync -->
+    <string name="topup_sync_pending">Saving top-up record…</string>
+    <string name="topup_sync_ok">Top-up saved to the database.</string>
+    <string name="topup_sync_failed">Card was updated, but saving the record failed: %1$s</string>
+    <string name="topup_sync_not_configured">Card was updated. (Database sync is not configured yet.)</string>
+</resources>

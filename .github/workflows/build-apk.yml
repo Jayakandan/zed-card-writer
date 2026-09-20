@@ -1,0 +1,50 @@
+name: Build APK
+
+on:
+  push:
+    branches: [ "main" ]
+  workflow_dispatch: {}
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    # These map to repo Settings -> Secrets and variables -> Actions.
+    # None of them are required to get a build - every one has a safe
+    # placeholder default in app/build.gradle - but set them before real use.
+    env:
+      LOGIN_USERNAME: ${{ secrets.LOGIN_USERNAME }}
+      LOGIN_PASSWORD_SHA256: ${{ secrets.LOGIN_PASSWORD_SHA256 }}
+      DATA_API_URL: ${{ secrets.DATA_API_URL }}
+      DATA_API_KEY: ${{ secrets.DATA_API_KEY }}
+      DATA_SOURCE: ${{ secrets.DATA_SOURCE }}
+      DATABASE_NAME: ${{ secrets.DATABASE_NAME }}
+      COLLECTION_NAME: ${{ secrets.COLLECTION_NAME }}
+
+    steps:
+      - name: Check out the repo
+        uses: actions/checkout@v4
+
+      - name: Set up JDK 17
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: "17"
+
+      - name: Set up the Android SDK
+        uses: android-actions/setup-android@v3
+
+      - name: Set up Gradle
+        uses: gradle/actions/setup-gradle@v4
+        with:
+          gradle-version: "8.7"
+
+      - name: Build debug APK
+        run: gradle assembleDebug --stacktrace
+
+      - name: Upload APK
+        uses: actions/upload-artifact@v4
+        with:
+          name: zed-nfc-card-debug-apk
+          path: app/build/outputs/apk/debug/*.apk
+          if-no-files-found: error
