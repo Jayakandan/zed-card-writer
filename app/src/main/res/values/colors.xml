@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="accent">#ffff5a50</color>
+    <color name="brand">#ffe1251b</color>
+    <color name="brand_dark">#ffb3141b</color>
+    <color name="card_dark">#ff17171c</color>
+    <color name="divider">#ffe4e7ec</color>
+    <color name="error">#ffb42318</color>
+    <color name="error_bg">#fffef3f2</color>
+    <color name="icon_background">#ffe1251b</color>
+    <color name="ok">#ff0e7c4a</color>
+    <color name="ok_bg">#ffe7f6ee</color>
+    <color name="page">#fff2f4f7</color>
+    <color name="surface">#ffffffff</color>
+    <color name="text_on_brand">#ffffffff</color>
+    <color name="text_on_brand_dim">#ffe6b8b5</color>
+    <color name="text_primary">#ff101828</color>
+    <color name="text_secondary">#ff667085</color>
+    <color name="warn_bg">#fffff8e6</color>
+    <color name="warn_text">#ff7a4f01</color>
+</resources>
